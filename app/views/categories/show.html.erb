@@ -2,13 +2,14 @@
 
 <h2>Recipes</h2>
 <ul>
-  <% @category.recipes.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
     <li>
       <%= recipe.name %> |
-      <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)),
+                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to 'Add a Recipe', new_category_bookmark_path(@category) %>
-<%= link_to 'Back to Categories', categories_path %>
+<%= link_to "Add Recipe to Category", new_category_bookmark_path(@category) %>
+<%= link_to "Back to Categories", categories_path %>

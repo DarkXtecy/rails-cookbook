@@ -14,14 +14,15 @@ class BookmarksController < ApplicationController
       redirect_to category_path(@category), notice: 'Bookmark was successfully created.'
     else
       @recipes = Recipe.all
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to category_path(params[:category_id]), notice: 'Bookmark was successfully deleted.'
+    # redirect_to category_path(params[:category_id]), notice: 'Bookmark was successfully deleted.'
+    redirect_to category_path(@bookmark.category), notice: 'Bookmark was successfully deleted.'
   end
 
   private
