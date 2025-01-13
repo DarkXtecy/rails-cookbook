@@ -1,0 +1,7 @@
+<h1>Add a Recipe to <%= @category.name %></h1>
+<%= simple_form_for [@category, @bookmark] do |f| %>
+  <%= f.input :recipe_id, collection: @recipes.map { |recipe| [recipe.name, recipe.id] }, prompt: 'Select a recipe' %>
+  <%= f.input :comment, placeholder: 'Add a comment (optional)' %>
+  <%= f.button :submit, 'Add Bookmark' %>
+<% end %>
+<%= link_to 'Back to Category', category_path(@category) %>
