@@ -11,15 +11,22 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Categories", categories_path %></li>
-        </ul>
-      </nav>
-    </header>
+    <!-- Render the Navbar Partial -->
+    <%= render 'shared/navbar' %>
 
-    <%= yield %>
+    <!-- Banner Section -->
+    <% if current_page?(root_path) || current_page?(categories_path) %>
+      <section class="banner">
+        <div class="container text-center text-white">
+          <h1 class="banner-title">CookBook</h1>
+          <p class="banner-subtitle">Save your favourite recipes</p>
+        </div>
+      </section>
+    <% end %>
+
+    <!-- Main Content -->
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

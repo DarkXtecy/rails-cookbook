@@ -1,9 +1,17 @@
-<h1>Categories</h1>
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, category_path(category) %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to "Add New Category", new_category_path %>
+<div class="categories-container">
+  <div class="categories-header">
+  <h2 class="categories-title">List of Categories</h2>
+  <%= link_to "New Category", new_category_path, class: "btn btn-primary new-category-button" %>
+  </div>
+
+  <div class="categories-cards">
+    <% @categories.each do |category| %>
+      <%= link_to category_path(category), class: "category-card" do %>
+        <h3><%= category.name %></h3>
+        <p><%= category.recipes.count %> recipes</p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# <%= link_to "Add New Category", new_category_path, class: "btn btn-primary mt-4" %>
+</div>

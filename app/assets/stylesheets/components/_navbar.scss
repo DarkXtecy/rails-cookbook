@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $light-gray; // Light gray background for elegance
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +10,27 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  height: auto;
+  object-fit: contain;
+}
+
+.navbar-lewagon .nav-link {
+  color: $gray; // Use the gray variable from colors.scss
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar-lewagon .nav-link:hover {
+  color: $blue; // Highlight links with blue on hover
+}
+
+.navbar-lewagon .btn-warning {
+  background-color: $orange; // Use the orange variable for consistency
+  border-color: $orange;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-lewagon .btn-warning:hover {
+  background-color: darken($orange, 10%);
 }

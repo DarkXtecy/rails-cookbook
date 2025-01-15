@@ -9,6 +9,8 @@
 #   end
 
 # Delete all records
+Bookmark.destroy_all
+Category.destroy_all
 Recipe.destroy_all
 
 # Create new records
@@ -22,7 +24,7 @@ Recipe.create!(
 Recipe.create!(
   name: "Green Goddess Salad",
   description: "Combine spinach, parsley, basil, chives, tarragon, shallot, garlic, anchovy paste, and lime juice in a high-powered blender.",
-  image_url: "https://www.allrecipes.com/thmb/nkA5QjQaKPm3s7TPF39xqMaXFBg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/Green_Goddess_Dressing_4x3-STEP_060-9f2282f3c8a745508e5da1c2777a51c6.jpg",
+  image_url: "https://img.freepik.com/free-photo/high-view-delicious-salad-transparent-bowl_23-2148585660.jpg",
   rating: 9.0
 )
 

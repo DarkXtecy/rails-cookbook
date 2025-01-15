@@ -1,7 +1,37 @@
-<h1>New Category</h1>
+<%# <h1>New Category</h1>
 <%= simple_form_for @category do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit, 'Create Category' %>
-<% end %>
+  <%# <%= f.input :name %>
+  <%# <%= f.button :submit, 'Create Category' %>
+<%# <% end %>
 
-<%= link_to "Back to Categories", categories_path %>
+<%# <%= link_to "Back to Categories", categories_path %>
+
+<div class="form-container">
+  <h1>Add a New Category</h1>
+
+  <%= simple_form_for @category do |f| %>
+    <!-- Category Name Field -->
+    <div class="form-group">
+      <%= f.input :name,
+                  label: "Category Name",
+                  input_html: { class: "form-control", placeholder: "Enter category name" } %>
+    </div>
+
+    <!-- Banner Image Field -->
+    <div class="form-group">
+      <%= f.input :banner_image,
+                  label: "Banner Image URL",
+                  input_html: { class: "form-control", placeholder: "Enter a valid image URL for the banner" } %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <%= f.button :submit, 'Create Category', class: "btn btn-orange" %>
+    </div>
+  <% end %>
+
+  <!-- Back to Categories Button -->
+  <div class="form-actions mt-3">
+    <%= link_to "Back to Categories", categories_path, class: "btn btn-secondary" %>
+  </div>
+</div>

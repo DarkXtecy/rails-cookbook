@@ -1,15 +1,65 @@
-<h1><%= @category.name %></h1>
+<%# <h1><%= @category.name %></h1>
 
-<h2>Recipes</h2>
+<%# <h2>Recipes</h2>
 <ul>
   <% @recipes.each do |recipe| %>
-    <li>
+    <%# <li>
       <%= recipe.name %> |
-      <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)),
+      <%# <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)),
                   data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-</ul>
+    <%# </li> %>
+  <%# <% end %>
+<%# </ul> %>
 
-<%= link_to "Add Recipe to Category", new_category_bookmark_path(@category) %>
-<%= link_to "Back to Categories", categories_path %>
+<%# <%= link_to "Add Recipe to Category", new_category_bookmark_path(@category) %>
+<%# <%= link_to "Back to Categories", categories_path %>
+
+<div class="category-show">
+  <!-- Banner -->
+  <section class="banner">
+  <div class="container text-center text-white">
+    <h1 class="banner-title"><%= @category.name %></h1>
+  </div>
+</section>
+
+
+  <!-- Recipes Section -->
+  <div class="recipes-container">
+    <div class="recipes-header">
+      <h2 class="recipes-title">Recipes</h2>
+      <%= link_to "Add Recipe to Category", new_category_bookmark_path(@category), class: "btn btn-orange new-recipe-button" %>
+    </div>
+
+    <% if @recipes.any? %>
+      <div class="recipes-grid">
+        <% @recipes.each do |recipe| %>
+          <div class="recipe-card">
+            <img src="<%= recipe.image_url %>"
+                 alt="<%= recipe.name %>"
+                 class="recipe-card-img">
+            <div class="recipe-card-content">
+              <h3><%= recipe.name %></h3>
+              <p><%= truncate(recipe.description, length: 60) %></p>
+            </div>
+            <div class="recipe-card-footer">
+            <span class="recipe-card-comment"><%= recipe.comment || "No comments yet" %></span>
+            <span class="recipe-card-rating">
+              <%= recipe.rating || "No rating" %>
+              <i class="fas fa-star"></i>
+            </span>
+          </div>
+            <% if recipe.bookmarks.exists?(category: @category) %>
+              <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)),
+                          class: "delete-link",
+                          data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No recipes available for this category. Add a new recipe!</p>
+    <% end %>
+
+    <%= link_to "Back to Categories", categories_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>
